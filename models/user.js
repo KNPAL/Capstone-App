@@ -18,6 +18,10 @@ const userSchema = new Schema({
     phoneNumber: {
         type: Number,
         required: true
+    },
+    tenants:{
+        type: Schema.Types.ObjectId,
+        ref:'Tenant'
     }
 });
 
