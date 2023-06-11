@@ -1,0 +1,7 @@
+{
+    "env":{
+        "MONGO_USER":"sudhanshpal",
+        "MONGO_PASSWORD":"1DZDQJS1GI23fcxs",
+        "MONGO_DB":"tenantManagement"
+    }
+}
