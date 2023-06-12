@@ -29,6 +29,12 @@ module.exports = buildSchema(`
         password:String
     }
 
+    type AuthData {
+        userId: ID!
+        token:String!
+        tokenExpiration: Int!
+    }
+
     input TenantInput {
         tenantId:ID
         College:String
@@ -58,6 +64,7 @@ module.exports = buildSchema(`
     type RootQuery {
         users: [User!]!
         tenants: [Tenant!]!
+        login(email:String!,password:String!): AuthData!
     }
 
     type RootMutation {
