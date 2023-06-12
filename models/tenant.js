@@ -35,7 +35,7 @@ const tenantSchema = new Schema({
         type: String
     },
     PersonalIDNumber: {
-        type: Number
+        type: String
     },
     RentPaidTill: {
         type: String
@@ -46,6 +46,10 @@ const tenantSchema = new Schema({
     StayFrom: {
         type: String
     },
+    user:{
+        type: Schema.Types.ObjectId,
+        ref:'User'
+    }
 });
 
 module.exports = mongoose.model('Tenant', tenantSchema);

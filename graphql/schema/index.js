@@ -10,13 +10,14 @@ module.exports = buildSchema(`
         FatherPhoneNumber:Float
         PermanentAddress:String
         PersonalID:String
-        PersonalIDNumber:Float
+        PersonalIDNumber:String
         RentPaidTill:String
         RoomNumber:Float
         StayFrom:String
         email:String!
-        PhoneNumber:Float!
+        phoneNumber:Float!
         name:String!
+        user:User!
     }
 
     type User {
@@ -25,23 +26,25 @@ module.exports = buildSchema(`
         email:String!
         role:String!
         phoneNumber:Float!
-        createUsers: [Tenant!]
+        password:String
     }
 
     input TenantInput {
+        tenantId:ID
         College:String
         Course:String
         FatherName:String
         FatherPhoneNumber:Float
         PermanentAddress:String
         PersonalID:String
-        PersonalIDNumber:Float
+        PersonalIDNumber:String
         RentPaidTill:String
         RoomNumber:Float
         StayFrom:String
         email:String!
-        PhoneNumber:Float!
+        phoneNumber:Float!
         name:String!
+        user:UserInput
     }
 
     input UserInput {
@@ -49,6 +52,7 @@ module.exports = buildSchema(`
         email:String!
         role:String!
         phoneNumber:Float!
+        password:String!
     }
 
     type RootQuery {
@@ -58,9 +62,9 @@ module.exports = buildSchema(`
 
     type RootMutation {
         createUsers(userInput:UserInput): User
-        createTenant(tenantInput:TenantInput): Tenant
-        removeTenant(tenantId:ID!): Tenant!
-        updateTenant(tenantId:ID!): Tenant!
+        createTenants(tenantInput:TenantInput): Tenant
+        removeTenant(tenantId:ID!,email:String!): Tenant!
+        updateTenant(tenantInput:TenantInput): Tenant
     }
 
     schema {

@@ -19,9 +19,9 @@ const userSchema = new Schema({
         type: Number,
         required: true
     },
-    tenants:{
-        type: Schema.Types.ObjectId,
-        ref:'Tenant'
+    password: {
+        type: String,
+        required: true
     }
 });
 
