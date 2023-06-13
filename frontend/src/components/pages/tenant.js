@@ -1,7 +1,7 @@
 
 
 const Tenant = () => {
-   const isEditMode = false;
+    const isEditMode = false;
     return (
         <>
             <div className="container my-2">
@@ -46,42 +46,42 @@ const Tenant = () => {
         </div> */}
                     <div className="row my-2 form-group">
                         <div className="col-md-6">
-                           Phone Number
+                            Phone Number
                         </div>
                         <div className="col-md-6">
-                            <input formControlName="PhoneNumber" className="form-control" readonly={!isEditMode} />
-                        </div>
-                    </div>
-                    <div className="row my-2 form-group">
-                        <div className="col-md-6">
-                            Father Name 
-                        </div>
-                        <div className="col-md-6">
-                            <input formControlName="FatherName" className="form-control" readonly={!isEditMode} />
+                            <input className="form-control" readonly={!isEditMode} />
                         </div>
                     </div>
                     <div className="row my-2 form-group">
                         <div className="col-md-6">
-                            Father Phone Number 
+                            Father Name
                         </div>
                         <div className="col-md-6">
-                            <input formControlName="FatherPhoneNumber" className="form-control" readonly={!isEditMode} />
-                        </div>
-                    </div>
-                    <div className="row my-2 form-group">
-                        <div className="col-md-6">
-                            College 
-                        </div>
-                        <div className="col-md-6">
-                            <input formControlName="College" className="form-control" readonly={!isEditMode} />
+                            <input className="form-control" readonly={!isEditMode} />
                         </div>
                     </div>
                     <div className="row my-2 form-group">
                         <div className="col-md-6">
-                            Course 
+                            Father Phone Number
                         </div>
                         <div className="col-md-6">
-                            <input formControlName="Course" className="form-control" readonly={!isEditMode} />
+                            <input className="form-control" readonly={!isEditMode} />
+                        </div>
+                    </div>
+                    <div className="row my-2 form-group">
+                        <div className="col-md-6">
+                            College
+                        </div>
+                        <div className="col-md-6">
+                            <input className="form-control" readonly={!isEditMode} />
+                        </div>
+                    </div>
+                    <div className="row my-2 form-group">
+                        <div className="col-md-6">
+                            Course
+                        </div>
+                        <div className="col-md-6">
+                            <input className="form-control" readonly={!isEditMode} />
                         </div>
                     </div>
                     <div className="row my-2 form-group">
@@ -90,57 +90,56 @@ const Tenant = () => {
                         </div>
                         <div className="col-md-6">
                             <div className="form-check form-check-inline">
-                                <input type="radio" className="form-check-input" id="pan-card" formControlName="PersonalID"
-                                    value="Pan Card"/>
-                                    <label className="form-check-label" for="pan-card">Pan Card</label>
+                                <input type="radio" className="form-check-input" id="pan-card" value="Pan Card" />
+                                <label className="form-check-label" htmlFor="pan-card">Pan Card</label>
                             </div>
                             <div className="form-check form-check-inline">
-                                <input type="radio" id="aadhar" className="form-check-input" formControlName="PersonalID"
-                                    value="Addhar Card"/>
-                                    <label className="form-check-label" for="aadhar">Adhar Card</label>
+                                <input type="radio" id="aadhar" className="form-check-input"
+                                    value="Addhar Card" />
+                                <label className="form-check-label" htmlFor="aadhar">Adhar Card</label>
                             </div>
                         </div>
                     </div>
                     <div className="row my-2 form-group">
                         <div className="col-md-6">
-                            PersonalIDNumber 
+                            PersonalIDNumber
                         </div>
                         <div className="col-md-6">
-                            <input formControlName="PersonalIDNumber" className="form-control" readonly={!isEditMode} />
-                        </div>
-                    </div>
-                    <div className="row my-2 form-group">
-                        <div className="col-md-6">
-                           StayFrom 
-                        </div>
-                        <div className="col-md-6">
-                            <input formControlName="StayFrom" className="form-control" readonly={!isEditMode} />
+                            <input className="form-control" readonly={!isEditMode} />
                         </div>
                     </div>
                     <div className="row my-2 form-group">
                         <div className="col-md-6">
-                            RentTill 
+                            StayFrom
                         </div>
                         <div className="col-md-6">
-                            <input formControlName="RentPaidTill" className="form-control" readonly={!isEditMode} />
+                            <input className="form-control" readonly={!isEditMode} />
                         </div>
                     </div>
                     <div className="row my-2 form-group">
                         <div className="col-md-6">
-                            PermanentAddress 
+                            RentTill
                         </div>
                         <div className="col-md-6">
-                            <input formControlName="PermanentAddress" className="form-control" readonly={!isEditMode} />
+                            <input className="form-control" readonly={!isEditMode} />
+                        </div>
+                    </div>
+                    <div className="row my-2 form-group">
+                        <div className="col-md-6">
+                            PermanentAddress
+                        </div>
+                        <div className="col-md-6">
+                            <input className="form-control" readonly={!isEditMode} />
                         </div>
                     </div>
                     <div className="form-group" >
-                    {/* *ngIf="isEditMode" */}
-                    <button  className="btn btn-primary" type="submit"> Submit </button>
-                    {/* [disabled]="tenantForm.invalid && validateForm()" (click)="onSubmit()" */}
-            </div>
-        </form >
+                        {/* *ngIf="isEditMode" */}
+                        <button className="btn btn-primary" type="submit"> Submit </button>
+                        {/* [disabled]="tenantForm.invalid && validateForm()" (click)="onSubmit()" */}
+                    </div>
+                </form >
 
-</div >
+            </div >
         </>
     )
 }

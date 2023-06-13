@@ -1,9 +1,11 @@
 import LoginForm from "../pages/loginForm";
 import SignUpForm from "../pages/signUpForm";
-import "./login.scss";
+import "./login.css";
 
 
 const Login = () => {
+
+    const isUserLogin = true;
 
     return (
         <>
@@ -11,8 +13,7 @@ const Login = () => {
                 <div
                     className="border bg-white align-self-center justify-content-center p-2 rounded"
                 >
-                    <LoginForm></LoginForm>
-                    <SignUpForm></SignUpForm>
+                    {isUserLogin ? <LoginForm></LoginForm> : <SignUpForm></SignUpForm>}
                 </div>
             </div>
         </>

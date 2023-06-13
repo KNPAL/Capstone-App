@@ -5,9 +5,11 @@ import Dashboard from '../pages/dashboard';
 import Navigation from '../pages/navigation';
 import Profile from '../pages/profile';
 import RoomList from '../pages/roomList';
+import Login from './login';
 
 
 const NavigationBar = () => {
+  const isUserLogin = true;
   return (<>
 
     <Router>
@@ -17,7 +19,8 @@ const NavigationBar = () => {
         <Route path="/tenant" element={<Tenant />} />
         <Route path="/tenantList" element={<TenantList />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/roomlist" element={<RoomList />}  />
+        <Route path="/roomlist" element={<RoomList />} />
+        <Route path="/Login" element={<Login />} />
       </Routes>
     </Router >
   </>)
