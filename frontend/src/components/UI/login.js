@@ -7,9 +7,9 @@ const Login = () => {
 
     return (
         <>
-            <div class="h-100 w-100 d-flex p-5 bg-light justify-content-center">
+            <div className="h-100 w-100 d-flex p-5 bg-light justify-content-center">
                 <div
-                    class="border bg-white align-self-center justify-content-center p-2 rounded"
+                    className="border bg-white align-self-center justify-content-center p-2 rounded"
                 >
                     <LoginForm></LoginForm>
                     <SignUpForm></SignUpForm>

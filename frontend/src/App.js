@@ -1,15 +1,15 @@
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import TenantList from './components/pages/tenantList';
-import LoginForm from './components/pages/loginForm';
+import NavigationBar from './components/UI/navigationBar';
 
 function App() {
   return (
-    <div className="App">
-      {/* <TenantList></TenantList> */}
-      <LoginForm></LoginForm>
-      {/* <SignUpForm></SignUpForm> */}
-    </div>
+    <>
+      <div className="container my-2">
+        <NavigationBar></NavigationBar>
+      </div>
+    </>
   );
 }
 
