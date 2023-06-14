@@ -1,10 +1,12 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import AuthContext from "../../context/auth-context";
 
 
 const LoginForm = ({ onIsNewUserClick }) => {
 
-  const [username, setUsername] = useState('')
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const authContextValue = useContext(AuthContext);
 
   const Login = (event) => {
     event.preventDefault();
@@ -37,7 +39,7 @@ const LoginForm = ({ onIsNewUserClick }) => {
         return res.json();
       })
       .then(response => {
-        console.log(response)
+        authContextValue.login(response.data.login.token, response.data.login.userId, response.data.login.tokenExpiration)
       }).catch(err => {
         console.log(err)
       });
