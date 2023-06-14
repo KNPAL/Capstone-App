@@ -63,6 +63,7 @@ module.exports = buildSchema(`
 
     type RootQuery {
         users: [User!]!
+        user(userId:ID!):User!
         tenants: [Tenant!]!
         login(email:String!,password:String!): AuthData!
     }

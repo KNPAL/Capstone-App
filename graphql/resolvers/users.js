@@ -17,6 +17,17 @@ module.exports = {
             throw err;
         }
     },
+    user: async (args) => {
+        try {
+            const users = await User.findById(args.userId)
+                return {
+                    ...users._doc,
+                    _id: users.id,
+                }
+        } catch (err) {
+            throw err;
+        }
+    },
     createUsers: async (args) => {
         try {
             const existingUser = await User.findOne({ email: args.userInput.email });

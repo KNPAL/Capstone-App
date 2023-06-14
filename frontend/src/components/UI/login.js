@@ -6,7 +6,6 @@ import "./login.css";
 
 const Login = () => {
     const [isNewUser, setIsUserLogin] = useState(true);
-    //  const isUserLogin = true;
 
     const handleIsNewUser = (data) => {
         setIsUserLogin(data)
