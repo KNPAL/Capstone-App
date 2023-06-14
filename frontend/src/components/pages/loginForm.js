@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-const LoginForm = () => {
+const LoginForm = ({ onIsNewUserClick }) => {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('');
@@ -30,22 +30,22 @@ const LoginForm = () => {
         'Content-Type': 'application/json'
       }
     })
-    .then(res => {
-      if (res.status !== 200 && res.status !== 201) {
-        throw new Error('Failed!')
-      }
-      return res.json();
-    })
-    .then(response => {
-      console.log(response)
-    }).catch(err => {
-      console.log(err)
-    });
+      .then(res => {
+        if (res.status !== 200 && res.status !== 201) {
+          throw new Error('Failed!')
+        }
+        return res.json();
+      })
+      .then(response => {
+        console.log(response)
+      }).catch(err => {
+        console.log(err)
+      });
 
   }
 
   const navigateToSignUp = () => {
-    alert('navigate to signup')
+    onIsNewUserClick(false)
   }
 
   const handleUsernameChange = (event) => {

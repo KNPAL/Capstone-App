@@ -1,11 +1,16 @@
+import { useState } from "react";
 import LoginForm from "../pages/loginForm";
 import SignUpForm from "../pages/signUpForm";
 import "./login.css";
 
 
 const Login = () => {
+    const [isNewUser, setIsUserLogin] = useState(true);
+    //  const isUserLogin = true;
 
-    const isUserLogin = true;
+    const handleIsNewUser = (data) => {
+        setIsUserLogin(data)
+    }
 
     return (
         <>
@@ -13,7 +18,7 @@ const Login = () => {
                 <div
                     className="border bg-white align-self-center justify-content-center p-2 rounded"
                 >
-                    {isUserLogin ? <LoginForm></LoginForm> : <SignUpForm></SignUpForm>}
+                    {isNewUser ? <LoginForm onIsNewUserClick={handleIsNewUser}></LoginForm> : <SignUpForm onIsNewUserClick={handleIsNewUser}></SignUpForm>}
                 </div>
             </div>
         </>
