@@ -10,7 +10,6 @@ const tenantSchema = new Schema({
     },
     email: {
         type: String,
-        required: true
     },
     phoneNumber: {
         type: Number,

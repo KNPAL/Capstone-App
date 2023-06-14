@@ -15,34 +15,38 @@ const Navigation = () => {
 
     useEffect(() => {
         const getUser = async () => {
-            const requestBody = {
-                query: `
-              query{
-                user(userId:"${authContextValue.userId}"){
-                  name
-                  _id
-                  email
-                  role
-                  phoneNumber
-                }
-              }
-              `
-            };
-            const request = await fetch('http://localhost:8000/graphql', {
-                method: 'POST',
-                body: JSON.stringify(requestBody),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            const response = await request.json();
-            setUser({
-                name: response.data.user.name,
-                _id: response.data.user._id,
-                email: response.data.user.email,
-                role: response.data.user.role,
-                phoneNumber: response.data.user.phoneNumber
-            })
+            try {
+                const requestBody = {
+                    query: `
+                  query{
+                    user(userId:"${authContextValue.userId}"){
+                      name
+                      _id
+                      email
+                      role
+                      phoneNumber
+                    }
+                  }
+                  `
+                };
+                const request = await fetch('http://localhost:8000/graphql', {
+                    method: 'POST',
+                    body: JSON.stringify(requestBody),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const response = await request.json();
+                setUser({
+                    name: response.data.user.name,
+                    _id: response.data.user._id,
+                    email: response.data.user.email,
+                    role: response.data.user.role,
+                    phoneNumber: response.data.user.phoneNumber
+                })
+            } catch (err) {
+                console.log(err)
+            }
         }
         getUser();
     }, [authContextValue.userId])

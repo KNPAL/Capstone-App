@@ -14,7 +14,7 @@ module.exports = buildSchema(`
         RentPaidTill:String
         RoomNumber:Float
         StayFrom:String
-        email:String!
+        email:String
         phoneNumber:Float!
         name:String!
         user:User!
@@ -47,10 +47,10 @@ module.exports = buildSchema(`
         RentPaidTill:String
         RoomNumber:Float
         StayFrom:String
-        email:String!
+        email:String
         phoneNumber:Float!
         name:String!
-        user:UserInput
+        user:ID
     }
 
     input UserInput {
@@ -65,6 +65,7 @@ module.exports = buildSchema(`
         users: [User!]!
         user(userId:ID!):User!
         tenants: [Tenant!]!
+        tenantsByUser(userId:ID!):[Tenant!]!
         login(email:String!,password:String!): AuthData!
     }
 

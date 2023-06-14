@@ -1,52 +1,83 @@
 import { useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import AuthContext from "../../context/auth-context";
 
 
 const TenantList = () => {
-
+    const [tenantList, setTenantList] = useState([]);
+    const authContextValue = useContext(AuthContext);
     const navigate = useNavigate();
+    useEffect(() => {
+        const getUser = async () => {
+            try {
+                const requestBody = {
+                    query: `
+                    query{
+                        tenantsByUser(userId:"${authContextValue.userId}"){
+                          _id
+                          College
+    Course
+    FatherName
+    FatherPhoneNumber
+    phoneNumber
+    PermanentAddress
+    PersonalID
+    PersonalIDNumber
+    RentPaidTill
+    RoomNumber
+    StayFrom
+    email
+    name
+                        }
+                      }
+                  `
+                };
+                const request = await fetch('http://localhost:8000/graphql', {
+                    method: 'POST',
+                    body: JSON.stringify(requestBody),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const response = await request.json();
+                setTenantList(response.data.tenantsByUser)
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        getUser();
+    }, [authContextValue.userId])
 
-    const tenantList = [{
-        RNumber: '010',
-        Name: 'sudhansh',
-        PhoneNumber: 94848494999,
-        PersonalID: 'pan card',
-        PersonalIDNumber: 'BTKPPERESK'
-    },{
-        RNumber: '020',
-        Name: 'sudhansh2',
-        PhoneNumber: 94848494999,
-        PersonalID: 'pan card',
-        PersonalIDNumber: 'BTKPPERESK'
-    },{
-        RNumber: '030',
-        Name: 'sudhansh3',
-        PhoneNumber: 94848494999,
-        PersonalID: 'pan card',
-        PersonalIDNumber: 'BTKPPERESK'
-    },{
-        RNumber: '040',
-        Name: 'sudhansh4',
-        PhoneNumber: 94848494999,
-        PersonalID: 'pan card',
-        PersonalIDNumber: 'BTKPPERESK'
-    }];
-
-    const removeTenant = () => {
-        alert('remove tenant')
+    const removeTenant = async (tenant) => {
+        try {
+            const requestBody = {
+                query: `
+                mutation{
+                    removeTenant(tenantId:"${tenant._id}",email:"${tenant.email}"){
+                      _id
+                    }
+                  }`
+            };
+            const request = await fetch('http://localhost:8000/graphql', {
+                method: 'POST',
+                body: JSON.stringify(requestBody),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+             await request.json();
+           } catch (err) {
+            console.log(err)
+        }
     }
 
     const editTenant = (tenant) => {
         console.log(tenant)
-        alert('edit tenant')
+        navigate('/tenant', { state: tenant });
     }
 
-    const moveToAddNew = (tenant) => {
-        console.log(tenant)
-        alert('moveToAddNew')
-    }
-
-    const moveToTenantDetail = () => {
-        navigate('/tenant');
+    const moveToAddNew = () => {
+        navigate('/tenant', { state: {} });
     }
 
     return (
@@ -70,10 +101,10 @@ const TenantList = () => {
                         {tenantList.length > 0 ? <>
                             <tbody>
                                 {tenantList.map(item => (
-                                    <tr >
-                                        <td>{item.RNumber} </td>
-                                        <td className="cursor-pointer text-primary" onClick={() => moveToTenantDetail(item)}>{item.Name}</td>
-                                        <td className="d-none d-sm-table-cell ">{item.PhoneNumber}</td>
+                                    <tr key={item.id} >
+                                        <td>{item.RoomNumber} </td>
+                                        <td className="cursor-pointer text-primary">{item.name}</td>
+                                        <td className="d-none d-sm-table-cell ">{item.phoneNumber}</td>
                                         <td className="d-none d-sm-table-cell ">{item.PersonalID}</td>
                                         <td className="d-none d-sm-table-cell ">{item.PersonalIDNumber}</td>
                                         <td>
@@ -86,7 +117,7 @@ const TenantList = () => {
 
                         </> : <>
                             <tbody>
-                                <td colspan="6" className="text-center p-2 m-2">
+                                <td colSpan="6" className="text-center p-2 m-2">
                                     No data
                                 </td>
                             </tbody>

@@ -15,12 +15,35 @@ module.exports = {
             throw err;
         }
     },
+    tenantsByUser: async (args) => {
+        try {
+            const tenants = await Tenant.find({ user: args.userId }).populate('user')
+            return tenants.map(tenant => {
+                return {
+                    ...tenant._doc,
+                    _id: tenant.id,
+                }
+            });
+        } catch (err) {
+            throw err;
+        }
+    },
     createTenants: async (args) => {
         const tenant = new Tenant({
             name: args.tenantInput.name,
             email: args.tenantInput.email,
             phoneNumber: args.tenantInput.phoneNumber,
-            user: "64860ec8150cf9571821b5c9"
+            user: args.tenantInput.user,
+            College: args.tenantInput.College,
+            Course: args.tenantInput.Course,
+            FatherName: args.tenantInput.FatherName,
+            FatherPhoneNumber: args.tenantInput.FatherPhoneNumber,
+            PermanentAddress: args.tenantInput.PermanentAddress,
+            PersonalID: args.tenantInput.PersonalID,
+            PersonalIDNumber: args.tenantInput.PersonalIDNumber,
+            RentPaidTill: args.tenantInput.RentPaidTill,
+            RoomNumber: args.tenantInput.RoomNumber,
+            StayFrom: args.tenantInput.StayFrom
         });
 
         let createTenant;
