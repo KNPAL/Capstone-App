@@ -67,6 +67,7 @@ const SignUpForm = ({ onIsNewUserClick }) => {
       })
       .then(response => {
         console.log(response)
+        navigateToLogin();
       }).catch(err => {
         console.log(err)
       });

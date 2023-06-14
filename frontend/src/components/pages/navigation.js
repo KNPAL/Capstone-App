@@ -64,6 +64,7 @@ const Navigation = () => {
     }
 
     const signOut = () => {
+        navigate('/Login');
         authContextValue.logout();
     }
 
