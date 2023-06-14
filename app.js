@@ -5,8 +5,10 @@ const mongoose = require('mongoose');
 
 const graphQlSchema = require('./graphql/schema/index');
 const graphQlResolvers = require('./graphql/resolvers/index');
+const pino = require('pino');
 
 const app = express();
+const logger = pino();
 
 app.use(bodyParser.json());
 
@@ -17,6 +19,7 @@ app.use((req, res, next) => {
     if (req.method === 'OPTIONS') {
         return res.sendStatus(200);
     }
+    logger.info({ req }, 'Incoming request');
     next();
 });
 
