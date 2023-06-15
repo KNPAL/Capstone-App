@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/auth-context";
 import { useContext, useEffect, useState } from "react";
+import { environment } from "../../environment";
 
 const Navigation = () => {
     const [user, setUser] = useState({
@@ -29,7 +30,7 @@ const Navigation = () => {
                   }
                   `
                 };
-                const request = await fetch('http://localhost:8000/graphql', {
+                const request = await fetch(environment.GRAPHQL_URL, {
                     method: 'POST',
                     body: JSON.stringify(requestBody),
                     headers: {

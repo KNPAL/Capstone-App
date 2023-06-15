@@ -1,5 +1,6 @@
 import { useContext, useState } from "react"
 import AuthContext from "../../context/auth-context";
+import { environment } from "../../environment";
 
 
 const LoginForm = ({ onIsNewUserClick }) => {
@@ -25,7 +26,7 @@ const LoginForm = ({ onIsNewUserClick }) => {
       }`
     };
 
-    fetch('http://localhost:8000/graphql', {
+    fetch(environment.GRAPHQL_URL, {
       method: 'POST',
       body: JSON.stringify(requestBody),
       headers: {

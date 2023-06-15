@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { environment } from "../../environment";
 
 
 
@@ -52,7 +53,7 @@ const SignUpForm = ({ onIsNewUserClick }) => {
       `
     };
 
-    fetch('http://localhost:8000/graphql', {
+    fetch(environment.GRAPHQL_URL, {
       method: 'POST',
       body: JSON.stringify(requestBody),
       headers: {

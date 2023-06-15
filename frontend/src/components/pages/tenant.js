@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import AuthContext from "../../context/auth-context";
+import { environment } from "../../environment";
 
 
 const Tenant = () => {
@@ -90,7 +91,7 @@ const Tenant = () => {
             }
         }
 
-        fetch('http://localhost:8000/graphql', {
+        fetch(environment.GRAPHQL_URL, {
             method: 'POST',
             body: JSON.stringify(requestBody),
             headers: {

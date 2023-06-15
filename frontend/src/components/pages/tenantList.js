@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/auth-context";
+import { environment } from "../../environment";
 
 
 const TenantList = () => {
@@ -14,25 +15,25 @@ const TenantList = () => {
                     query: `
                     query{
                         tenantsByUser(userId:"${authContextValue.userId}"){
-                          _id
-                          College
-    Course
-    FatherName
-    FatherPhoneNumber
-    phoneNumber
-    PermanentAddress
-    PersonalID
-    PersonalIDNumber
-    RentPaidTill
-    RoomNumber
-    StayFrom
-    email
-    name
+                            _id
+                            College
+                            Course
+                            FatherName
+                            FatherPhoneNumber
+                            phoneNumber
+                            PermanentAddress
+                            PersonalID
+                            PersonalIDNumber
+                            RentPaidTill
+                            RoomNumber
+                            StayFrom
+                            email
+                            name
                         }
                       }
                   `
                 };
-                const request = await fetch('http://localhost:8000/graphql', {
+                const request = await fetch(environment.GRAPHQL_URL, {
                     method: 'POST',
                     body: JSON.stringify(requestBody),
                     headers: {
@@ -58,7 +59,7 @@ const TenantList = () => {
                     }
                   }`
             };
-            const request = await fetch('http://localhost:8000/graphql', {
+            const request = await fetch(environment.GRAPHQL_URL, {
                 method: 'POST',
                 body: JSON.stringify(requestBody),
                 headers: {
